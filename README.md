@@ -46,7 +46,11 @@ $ colorpicker --short --one-shot --preview | xsel -b
 * X11
 * Xcomposite
 * Xfixes
+#### debian/Deepin Linux
 
+```bash
+sudo apt install libgtk2.0-dev libcairo2-dev libxext-dev libxfixes-dev libxcomposite-dev libx11-dev -y
+```
 ### License
 
 MIT
