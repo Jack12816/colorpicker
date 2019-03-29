@@ -6,5 +6,11 @@ CFLAGS := $(shell pkg-config --libs --cflags \
 colorpicker: main.c
 	cc -o colorpicker main.c $(CFLAGS)
 
+install:
+	@cp -v colorpicker /usr/bin/
+
+uninstall:
+	@rm -vf /usr/bin/colorpicker
+
 clean:
-	rm -f colorpicker
+	@rm -f colorpicker
