@@ -85,6 +85,11 @@ print_color_at(GdkDrawable * drawable, gint x, gint y)
     GdkImage * pixel = gdk_drawable_get_image(drawable, x, y, 1, 1);
     guint32 color = gdk_image_get_pixel(pixel, 0, 0);
 
+    GtkClipboard *clipboard = gtk_clipboard_get(GDK_SELECTION_CLIPBOARD);
+
+    char *color_string = (char*)malloc(13 * sizeof(char));
+    sprintf(color_string, "#%06X", color);
+
     if (short_format) {
         printf("#%06X\n", color);
     } else {
@@ -93,6 +98,7 @@ print_color_at(GdkDrawable * drawable, gint x, gint y)
           (color >> 0x08) & 0xFF,
           (color >> 0x00) & 0xFF,
           color);
+      gtk_clipboard_set_text(clipboard, color_string, -1);
     }
 
     gdk_image_destroy(pixel);
